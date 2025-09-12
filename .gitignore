@@ -1,5 +1,35 @@
-node_modules
-# Keep environment variables out of version control
-.env
+# Node modules
+node_modules/
 
-/generated/prisma
+# Prisma generated client
+/generated/
+/**/node_modules/.cache/
+
+# Environment variables
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Build outputs
+dist/
+build/
+out/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor-specific
+.vscode/
+.idea/
+
+# Optional lock files (keep if your team wants consistent installs)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
