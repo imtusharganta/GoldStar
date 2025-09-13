@@ -31,4 +31,9 @@ export class InterviewsService {
       where: { userId },
     });
   }
+
+  async getAllInterviews(): Promise<Interview[]> {
+  return this.prisma.interview.findMany();
+}
+
 }

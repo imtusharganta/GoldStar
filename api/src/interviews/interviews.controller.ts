@@ -27,11 +27,19 @@ export class InterviewsController {
     );
   }
 
-  // Get all interviews for a user
+  // Get all interviews for a specific userIs
   @Get(':userId')
   async getInterviewsByUser(
     @Param('userId') userId: string,
   ): Promise<Interview[]> {
     return this.interviewsService.getInterviewsByUser(Number(userId));
   }
+
+  //this gets all interviews in the database
+  @Get()
+  async getAll(): Promise<Interview[]> {
+    return this.interviewsService.getAllInterviews();
+  }
+
+
 }
