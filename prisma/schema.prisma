@@ -1,7 +1,7 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-
+// to auto format in here, run npx prisma format
+//to auto format code, run npx prettier --write
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
@@ -14,10 +14,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-//example model
+//User model
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String?
   createdAt DateTime @default(now())
+
+  //one user can have many Interviews
+
+  interviews Interview[]
+}
+
+//Interviews/OAs model
+
+model Interview {
+  id        Int       @id @default(autoincrement())
+  company   String
+  stage     String // e.g. "OA", "PhoneScreen", "Interview R1", "Interview R2"
+  dueDate   DateTime? // only for OAs
+  scheduled DateTime? // for interviews/phone screens
+  userId    Int
+  user      User      @relation(fields: [userId], references: [id])
 }
