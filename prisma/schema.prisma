@@ -37,3 +37,17 @@ model Interview {
   userId    Int
   user      User      @relation(fields: [userId], references: [id])
 }
+
+model Application {
+  id          Int       @id @default(autoincrement())
+  userId      Int
+  company     String
+  position    String
+  status      String // e.g. "Applied", "Rejected", "OA Sent", etc.
+  appliedDate DateTime? // optional
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // relations (if you want to connect with User later)
+  // user User @relation(fields: [userId], references: [id])
+}
